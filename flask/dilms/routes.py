@@ -1,14 +1,14 @@
-# dilms/views.py
+# dilms/routes.py
 
 """
 This module enacts a high-level manager for the interactive functionality of DILMS. It renders pages and passes
-requests to the [[somekindofSQL]] database through the appropriate functions in sql.py.
+requests to the postgresql database through the appropriate functions in sql.py.
 
 --------
 
 The pages perform the following functions.
 
-/index --- DILMS's homepage
+/index --- DILMS homepage
 """
 
 """
@@ -19,8 +19,10 @@ Imports
 from flask import render_template, request
 from dilms import app
 
-# SQL imports
-# TODO: Decide on details of SQL functionality
+# SQL functionality
+import dilms.sql as sql
+
+# TODO: other imports
 
 """
 Auxiliary functions

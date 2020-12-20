@@ -16,4 +16,4 @@ with debug=True active.
 app.run(debug=True)
 
 # For production
-#app.run(debug=False)
+#app.run()

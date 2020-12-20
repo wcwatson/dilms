@@ -2,7 +2,8 @@
 
 The Digital Index of Late Medieval Song is an interactive database that aims to describe every inscription of vernacular polyphony from 15th-century Europe.
 Its original, "pre-pre-release" version was constructed as part of my dissertation project, ["Circulating Song from the Century before Print (2020)."][1]
-The current release may, of course, be found at [dilms.org][2], and my article describing it, TK, may be found at TK.
+The current public release may, of course, be found at [dilms.org][2].
+I am preparing an article that discusses the curation of DILMS through the lens of critical data studies; additional details will be posted here as they become available.
 
 ## Repo Structure
 
@@ -52,7 +53,7 @@ The third will create a new virtual environment called `dilms` that has all of t
 If at any point you need to activate this environment, just run `$ conda activate dilms` in a Terminal window.
 When you're done, leave the environment by running `$ conda deactivate`, and you can go about your other business.
 
-TK
+Details on `git` best practices, workflow, and all the rest TK soon.
 
 [1]: <www.researchgate.net/publication/340849806_Circulating_Song_from_the_Century_before_Print>
 [2]: <www.dilms.org>
