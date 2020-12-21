@@ -6,9 +6,9 @@ requests to the postgresql database through the appropriate functions in sql.py.
 
 --------
 
-The pages perform the following functions.
+The pages have the following functions.
 
-/index --- DILMS homepage
+/home --- DILMS homepage
 """
 
 """
@@ -35,7 +35,8 @@ App functionality
 """
 
 @app.route('/')
+@app.route('/home')
 @app.route('/index')
-def index():
+def home():
     """Renders the DILMS home page."""
-    return render_template('index.html')
+    return render_template('home.html')

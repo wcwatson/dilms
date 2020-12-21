@@ -4,7 +4,7 @@
 Initializes the DILMS Flask app.
 """
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 from flask import Flask
 app = Flask(__name__)
