@@ -11,6 +11,7 @@
 - [ ] My code adheres to the style guidelines; it is, generally speaking, legible and easy to follow
 - [ ] I have included a docstring in any new functions or classes, including examples where appropriate
 - [ ] I have performed appropriate tests on my feature's functionality and included a record of those tests below <!--- This includes things like screenshots of new pages. -->
+- [ ] I have incremented the version number in `__init__.py`
 
 ## Description
 
