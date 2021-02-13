@@ -11,28 +11,24 @@ The pages have the following functions.
 /home --- DILMS homepage
 """
 
-"""
-Imports
-"""
+# Imports
 
 # Flask functionality
 from flask import render_template, request
 from dilms import app
+# from dilms.sql import TODO: add functions
 
 # SQL functionality
 import dilms.sql as sql
 
 # TODO: other imports
 
-"""
-Auxiliary functions
-"""
+#Auxiliary functions
 
 # TK
 
-"""
-App functionality
-"""
+
+#App functionality
 
 @app.route('/')
 @app.route('/home')

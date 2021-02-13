@@ -43,20 +43,20 @@ Anaconda gives us a handy way to manage our virtual environments, which practica
 Once you've installed Anaconda, open a Terminal window in the directory where you want to store your local copy of DILMS (e.g., mine is in `/Desktop/DILMS/`).
 If you're new to Terminal and aren't sure how to do that, spend some time with [this helpful blog post][4] and proceed when you feel comfortable `cd`ing and `ls`ing your way around.
 Once you've opened a Terminal window in the right place, run the following commands.
-```
-$ git clone https://github.com/wcwatson/dilms.git
+```bash
+>> git clone https://github.com/wcwatson/dilms.git
 
-$ cd dilms
+>> cd dilms
 
-$ conda env create -f environment.yml
+>> conda env create -f environment.yml
 ```
 The first command will clone the repo to the location you've specified on your local machine.
 The second will take you into the repo's root directory.
 The third will create a new virtual environment called `dilms` that has all of the packages you will need to work on this project.
-If at any point you need to activate this environment, just run `$ conda activate dilms` in a Terminal window.
-When you're done, leave the environment by running `$ conda deactivate`, and you can go about your other business.
+If at any point you need to activate this environment, just run `conda activate dilms` in a Terminal window.
+When you're done, leave the environment by running `conda deactivate`, and you can go about your other business.
 
-Details on `git` best practices, workflow, and all the rest coming soon.
+Details on git best practices, workflow, and all the rest coming soon.
 
 [1]: <https://www.researchgate.net/publication/340849806_Circulating_Song_from_the_Century_before_Print>
 [2]: <http://www.dilms.org>
