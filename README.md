@@ -63,7 +63,7 @@ When you're done, leave the environment by running `conda deactivate`, and you c
 
 ### Workflow
 DILMS follows [the Gitflow workflow][5] in spirit, although I don't make use of the git-flow extension library.
-Practically, this means that all work should be based off of the `develop` branch; the `master` branch is used only for official releases.
+Practically, this means that all work should be based off of the `develop` branch; the `main` branch is used only for official releases.
 Whenever you start work on a new feature, create a new branch off of `develop` called `feature/[feature-name]`.
 If you are working on a capta-related "feature" (e.g., adding a new manuscript or editing inscriptions), your feature branch should be called `feature/capta/[descriptor]`.
 When your work on that feature is finished and ready for review, open a pull request to merge your feature branch into `develop`.
