@@ -7,23 +7,25 @@ import psycopg2
 
 
 def _inspect_query(query):
-    """Inspects a query submitted by the user; returns a version stripped of
-    comments if the query is allowed and a dummy query that will produce one of
-    a few preset warning messages if the query violates any of the safety
-    checks.
+    """Inspects a query submitted by the user; returns either the query
+    stripped of comments (if the query is allowed) or a dummy query that
+    produces one of a few preset warning messages (if the query violates any of
+    the safety checks).
 
     Args:
         query (str): a query entered by the user
 
     Returns:
         str: either a stripped-down version of the user's query or a dummy query
-        that returns a warning message, as appropriate
+            that returns a warning message, as appropriate
 
     Examples:
         TODO: illustrative examples
     """
 
     # TODO: all of it
+
+    return query
 
 
 def _execute_query(query, conn):
@@ -42,21 +44,21 @@ def _execute_query(query, conn):
     """
 
     # Attempt to execute the query; if successful return the result, otherwise
-    # return a syntax warning.
+    # return a syntax warning
     with conn.cursor() as cur:
         try:
             cur.execute(query)
             result = cur.fetchall()
         except psycopg2.ProgrammingError:
-            error_msg = ('SQL ERROR: either your query has a syntax error or it'
+            error_msg = ('SQLError: either your query has a syntax error or it'
                 ' failed to return any results')
             result = [error_msg]
     return result
 
 
 def inspect_and_execute(query, conn):
-    """Inspects and, if allowed, executes a query submitted by a user on
-     database.html and returns either the results or a warning, as appropriate.
+    """Inspects and, if permitted, executes a query submitted by a user on
+     database.html, returns either the results or a warning as appropriate.
 
     Args:
         query (str): a query entered by the user
