@@ -28,13 +28,13 @@ This module helps manage DILMS's SQL functionality, from sanitizing input to for
 This module defines the app's interactive functionality.
 
 ### `environment.yml`
-This YAML file defines a virtual environment that needs to be active to run DILMS.
+This YAML file defines the virtual environment in which DILMS needs to be run.
 See below for further details.
 
 
 ## Get Involved
 
-If you are interested in contributing to DILMS, please feel free to [get in touch](mailto:admin@dilms.org) and we'll talk about what you might work on!
+If you are interested in contributing to DILMS, please feel free to [get in touch](mailto:admin@dilms.org) and we'll talk about what you might work on.
 
 ### Getting Started
 Once you're ready to start working on the project, clone this repo on your local machine and make a new virtual environment called `dilms` using the configurations in `environment.yml`.
@@ -44,39 +44,39 @@ If not, don't panic!
 Follow the more detailed directions below (they assume that you're working on a Mac).
 
 First, make sure you have [Anaconda][3] installed on your machine.
-Anaconda gives us a handy way to manage our virtual environments, which practically speaking means that it ensures we're working with the right versions of all of the packages we need, even if we decide to use a different version for another project.
+Anaconda will give you a handy way to manage your virtual environments, which practically speaking means that it ensures you're working with the right versions of all the packages you need for DILMS, even if you decide to use a different version for another project.
 Once you've installed Anaconda, open a Terminal window in the directory where you want to store your local copy of DILMS (e.g., mine is in `/Desktop/DILMS/`).
 If you're new to the command line and aren't sure how to do that, spend some time with [this helpful blog post][4] and proceed when you feel comfortable `cd`ing and `ls`ing your way around.
 Once you've opened a Terminal window in the right place, run the following commands.
-```bash
->> git clone https://github.com/wcwatson/dilms.git
+```shell
+git clone https://github.com/wcwatson/dilms.git
 
->> cd dilms
+cd dilms
 
->> conda env create -f environment.yml
+conda env create -f environment.yml
 ```
-The first command will clone the repo to the location you've specified on your local machine.
+The first command will clone the repo to the location you've opened specified on your local machine.
 The second will take you into the repo's root directory.
 The third will create a new virtual environment called `dilms` that has all of the packages you will need to work on this project.
 If at any point you need to activate this environment, just run `conda activate dilms` in a Terminal window.
 When you're done, leave the environment by running `conda deactivate`, and you can go about your other business.
 
-### Workflow
-DILMS follows [the Gitflow workflow][5] in spirit, although I don't make use of the git-flow extension library.
-Practically, this means that all work should be based off of the `develop` branch; the `main` branch is used only for official releases.
-Whenever you start work on a new feature, create a new branch off of `develop` called `feature/[feature-name]`.
-If you are working on a capta-related "feature" (e.g., adding a new manuscript or editing inscriptions), your feature branch should be called `feature/capta/[descriptor]`.
-When your work on that feature is finished and ready for review, open a pull request to merge your feature branch into `develop`.
-**NEVER** commit changes directly to `develop`.
-
-If you have limited experience with `git`, I recommend checking out a few of [the resources and tutorials available on Github][6].
-I recommend using the command line as much as possible to perform `git` operations, since it offers a lot of flexibility.
-However, there are desktop `git` clients available if the command line just isn't your thing&mdash;[GitHub Desktop](https://desktop.github.com/) is a good one.
-I also recommend acquainting yourself with [best practices for `commit` messages][7].
-
 ### Contributing
 If you are making changes to the capta made available through DILMS (i.e., making changes to the `capta/` directory), please follow the guidelines in [capta/CONTRIBUTING.md](capta/CONTRIBUTING.md) and use [capta_template.md](.github/PULL_REQUEST_TEMPLATE/capta_template.md) for your pull requests.
 If you are contributing to the functionality of the app (i.e., making changes to the `flask/` directory), please follow the guidelines in [flask/CONTRIBUTING.md](flask/CONTRIBUTING.md) and use [flask_template.md](.github/PULL_REQUEST_TEMPLATE/flask_template.md) for your pull requests.
+
+### Workflow
+DILMS follows [the Gitflow workflow][5] in spirit, although I don't make use of the git-flow extension library.
+Practically, this means that all work should be based off of the `develop` branch; the `main` branch is used only for official releases.
+Whenever you start work on a new feature, create a new branch off of `develop` called `feature/[descriptor]`.
+If you are working on a capta-related "feature" (e.g., adding a new manuscript or editing inscriptions), your feature branch should be called `feature/capta/[descriptor]`.
+When your work on that feature is finished and ready for review, open a pull request to merge your feature branch into `develop`, following the instructions in the relevant contributing guides and pull request templates.
+**NEVER** commit changes directly to `develop`.
+
+If you have limited experience with `git`, you might want to check out a few of [the resources and tutorials available on Github][6].
+I recommend using the command line as much as possible to perform `git` operations, since it offers a lot of flexibility.
+However, there are desktop `git` clients available if the command line just isn't your thing&mdash;[GitHub Desktop](https://desktop.github.com/) is a good one.
+I also recommend acquainting yourself with [best practices for `commit` messages][7].
 
 [1]: <https://www.researchgate.net/publication/340849806_Circulating_Song_from_the_Century_before_Print>
 [2]: <http://www.dilms.org>
