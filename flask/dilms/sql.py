@@ -3,7 +3,6 @@ PostgreSQL database, effectively sequestering all of DILMS's SQL functionality
 away from its Flask functionality.
 """
 
-import pandas as pd
 import psycopg2
 
 
@@ -18,15 +17,16 @@ def get_db_connection(db_name, user, password):
 
 
 def execute_query(query, conn):
-    """Executes a query submitted by a user on database.html.
+    """Executes a query using the given datbase connection.
 
     Args:
         query (str): a query entered by the user
         conn (psycopg2.connection): a connection to the dilms database
 
     Returns:
-        list: either the results of the user's query, or a single row indicating
-            an error (if the query failed to execute or return results)
+        list, list: either the results of the user's query and associated column
+            names, or a single row/column indicating an error if the query
+            failed to execute or returned no results
     """
 
     with conn.cursor() as cur:
@@ -45,7 +45,4 @@ def execute_query(query, conn):
             column_names = ['Error']
             conn.rollback()
 
-    # Converting the query's results to a pandas DataFrame allows for easy
-    # handling elsewhere in the app
-    result_df = pd.DataFrame(result, columns=column_names)
-    return result_df
+    return result, column_names

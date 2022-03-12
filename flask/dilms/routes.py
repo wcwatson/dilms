@@ -1,25 +1,15 @@
 """This module manages routes and backend logic for DILMS.
 
 The pages have the following functions:
-/home | DILMS homepage
+/home     | DILMS homepage
 /database | UI for querying the dilms postgresql database
-/results | displays the results of a user's query
+/results  | displays the results of a user's query
 """
 
 from flask import render_template, request
 
 from dilms import app
 from dilms.sql import execute_query, get_db_connection
-
-
-# Tags to be inserted into every rendered table of results
-# NB: this is intended to be inserted right after the "<table" characters that
-# begin an HTML table, so it begins with a space to avoid "<tableid=..."
-TABLE_INSERT = (
-    ' id="results" data-show-export="true" data-pagination="true"'
-    ' data-side-pagination="server" data-click-to-select="true"'
-    ' data-toolbar="#toolbar" data-show-toggle="true" data-show-columns="true"'
-)
 
 
 # Connection to PostgreSQL database, using credentials stored in the app
@@ -49,15 +39,10 @@ def database():
 def result():
     """Retrieves and displays the result of a user's query."""
     query = request.form.get('query')
-    query_result = execute_query(query=query, conn=db_connection)
-    query_result = query_result.to_html(
-        index=False,
-        na_rep='NULL',
-        render_links=True
-    )
-    query_result = query_result[:6] + TABLE_INSERT + query_result[6:]
+    query_result, column_names = execute_query(query=query, conn=db_connection)
     return render_template(
         'result.html',
         query=query,
-        query_result=query_result
+        query_result=query_result,
+        column_names=column_names
     )
