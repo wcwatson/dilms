@@ -1,28 +1,34 @@
-"""This module enacts a high-level manager for the interactive functionality of
-DILMS. It renders pages and passes user queries to the PostgreSQL database via
-the appropriate functions in sql.py.
+"""This module manages routes and backend logic for DILMS.
 
-The pages have the following functions.
-/home - DILMS homepage
-/database - UI to query to the dilms postgresql database and view the results
+The pages have the following functions:
+/home | DILMS homepage
+/database | UI for querying the dilms postgresql database
+/results | displays the results of a user's query
 """
 
-# Flask functionality
 from flask import render_template, request
+
 from dilms import app
-
-# SQL functionality
-import psycopg2
-from dilms.sql import inspect_and_execute
+from dilms.sql import execute_query, get_db_connection
 
 
-# Initialize connection to PostgreSQL database
-# TODO: uncomment once ready
-#user = 'postgres'
-#host = 'localhost'
-#dbname = 'dilms'
-#conn = None
-#conn = psycopg2.connect(database=dbname, user=user)
+# Tags to be inserted into every rendered table of results
+# NB: this is intended to be inserted right after the "<table" characters that
+# begin an HTML table, so it begins with a space to avoid "<tableid=..."
+TABLE_INSERT = (
+    ' id="results" data-show-export="true" data-pagination="true"'
+    ' data-side-pagination="server" data-click-to-select="true"'
+    ' data-toolbar="#toolbar" data-show-toggle="true" data-show-columns="true"'
+)
+
+
+# Connection to PostgreSQL database, using credentials stored in the app
+# configurations
+db_connection = get_db_connection(
+    db_name=app.config.get('POSTGRES_DB_NAME'),
+    user=app.config.get('POSTGRES_USER'),
+    password=app.config.get('POSTGRES_PW')
+)
 
 
 @app.route('/')
@@ -33,17 +39,25 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/database', methods=['GET', 'POST'])
+@app.route('/database')
 def database():
-    """Renders the database UI and executes user queries."""
+    """Renders the database UI."""
+    return render_template('database.html')
 
-    # If the user submitted a query, retrieve and execute it
-    result = None
-    if request:
-        query = request.args.get('query')
-        result = inspect_and_execute(query)
 
-    # TODO: making the interactive functionality work
-
-    # Render the page with the results of the user's query
-    return render_template('database.html', query=query, result=result)
+@app.route('/result', methods=['GET', 'POST'])
+def result():
+    """Retrieves and displays the result of a user's query."""
+    query = request.form.get('query')
+    query_result = execute_query(query=query, conn=db_connection)
+    query_result = query_result.to_html(
+        index=False,
+        na_rep='NULL',
+        render_links=True
+    )
+    query_result = query_result[:6] + TABLE_INSERT + query_result[6:]
+    return render_template(
+        'result.html',
+        query=query,
+        query_result=query_result
+    )
