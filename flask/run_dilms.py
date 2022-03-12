@@ -1,13 +1,8 @@
-# run_dilms.py
-
-"""
-Runs the DILMS Flask app.
-
---------
-
-If you are running DILMS locally as part of active development efforts, run this module to open a local version
-of the Flask app.
+"""If you are running DILMS locally as part of active development efforts, you
+can run this module to open a local version of the app.
 """
 
 from dilms import app
-app.run(debug=True)
+
+if __name__ == '__main__':
+    app.run(debug=True)
