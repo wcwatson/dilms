@@ -28,7 +28,6 @@ def execute_query(query, conn):
             names, or a single row/column indicating an error if the query
             failed to execute or returned no results
     """
-
     with conn.cursor() as cur:
         try:
             cur.execute(query)
@@ -44,5 +43,4 @@ def execute_query(query, conn):
             result = [error_msg]
             column_names = ['Error']
             conn.rollback()
-
     return result, column_names

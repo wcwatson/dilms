@@ -1,6 +1,6 @@
 """The DILMS Flask app."""
 
-__version__ = '0.1.1'
+__version__ = '0.2.0'
 
 from flask import Flask
 import os
