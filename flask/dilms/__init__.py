@@ -1,11 +1,11 @@
-# dilms/__init__.py
+"""The DILMS Flask app."""
 
-"""
-Initializes the DILMS Flask app.
-"""
-
-__version__ = '0.1.2'
+__version__ = '0.2.0'
 
 from flask import Flask
+import os
+
 app = Flask(__name__)
+env_config = os.getenv('APP_SETTINGS', 'dilms.config.DevelopmentConfig')
+app.config.from_object(env_config)
 from dilms import routes

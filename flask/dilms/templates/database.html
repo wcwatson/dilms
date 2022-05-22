@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="starter-template">
+  <h2>Database</h2>
+  <hr>
+</div>
+
+<div class="d-flex p-2">
+  <form action="/result" method="POST" enctype="text">
+    <div class="form-group">
+      <label for="query">Query the DILMS database:</label>
+        <!-- TODO: use codemirror to perform dynamic SQL syntax highlighting on input-->
+        <textarea class="form-control" id="query" name="query" rows="8" placeholder="select&#13;&#32;&#32;source_name, first_folio, last_folio&#13;from&#13;&#32;&#32;inscriptions&#13;where&#13;&#32;&#32;song_name like '%Je ne fay plus%'&#13;;"></textarea>
+        <br>
+    </div>
+    <div align="center">
+      <button type="submit" class="btn btn-primary">Execute</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

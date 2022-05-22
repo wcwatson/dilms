@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="starter-template">
+  <h2>Database</h2>
+  <hr style="margin-bottom:-4em" />
+</div>
+
+<div class="starter-template">
+  <p class="text-left">{{ query }}</p>
+
+  <!-- TODO: find way to export results -->
+  <table class="table table-bordered table-hover" id="table">
+    <caption>Your query results from DILMS</caption>
+    <tr>
+      {% for n in column_names %}
+      <th scope="col">{{ n }}</th>
+      {% endfor %}
+    </tr>
+    {% for r in query_result %}
+    <tr>
+      {% for d in r %}
+      <td style="text-align:left">{{ d }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<div class="d-flex p-2">
+  <form action="/database" method="GET">
+    <div class="form-group">
+      <div align="center">
+        <input type="submit" class="btn btn-primary" value="Query the Database" />
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
